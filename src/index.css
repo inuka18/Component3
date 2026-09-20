@@ -1,0 +1,235 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 10px;
+
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 243 75% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 20% 96%;
+    --secondary-foreground: 222 47% 11%;
+
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 220 20% 95%;
+    --accent-foreground: 222 47% 11%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 90%;
+    --input: 220 15% 88%;
+    --ring: 243 75% 59%;
+
+    --sidebar-bg: 230 38% 12%;
+    --sidebar-foreground: 220 20% 88%;
+    --sidebar-border: 230 28% 20%;
+    --sidebar-accent: 230 32% 18%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-primary: 243 80% 64%;
+    --sidebar-ring: 243 80% 64%;
+
+    --status-confirmed-bg: 142 65% 93%;
+    --status-confirmed-fg: 142 60% 24%;
+    --status-atrisk-bg: 38 92% 90%;
+    --status-atrisk-fg: 30 80% 32%;
+    --status-modified-bg: 199 89% 92%;
+    --status-modified-fg: 201 75% 34%;
+    --status-dropped-bg: 0 72% 94%;
+    --status-dropped-fg: 0 65% 40%;
+    /* Purple: Schedule's "ripple-propagation" cause category. No existing
+       token carries this hue (class-expectation/primary are both ~243°,
+       too close to primary blue to read as a distinct third cause), so
+       this is added following the exact same bg/fg naming convention as
+       the status-* family above rather than a parallel palette. */
+    --status-ripple-bg: 262 68% 94%;
+    --status-ripple-fg: 262 60% 45%;
+
+    --class-constraint-bg: 38 92% 90%;
+    --class-constraint-fg: 30 80% 32%;
+    --class-expectation-bg: 243 70% 95%;
+    --class-expectation-fg: 243 55% 46%;
+    --class-completion-bg: 142 65% 93%;
+    --class-completion-fg: 142 60% 24%;
+    --class-conflict-bg: 0 72% 94%;
+    --class-conflict-fg: 0 65% 40%;
+    --class-none-bg: 220 15% 94%;
+    --class-none-fg: 220 9% 42%;
+
+    /* Generic categorical chart palette (Signal Analytics' source
+       breakdown, and any future chart needing >1 same-family series that
+       isn't a requirement status or classification, which already have
+       their own dedicated tokens above). Fixed hue order per the CVD-safe
+       ordering it was validated in. Never reassign per-chart, never
+       cycle past the slot count a given legend actually uses. */
+    --series-1: 213 68% 50%;
+    --series-2: 17 82% 56%;
+    --series-3: 159 73% 40%;
+    --series-4: 41 100% 46%;
+    --series-5: 337 70% 70%;
+    --series-6: 120 100% 26%;
+  }
+
+  .dark {
+    --background: 222 35% 8%;
+    --foreground: 220 25% 94%;
+
+    --card: 222 30% 12%;
+    --card-foreground: 220 25% 94%;
+
+    --popover: 222 30% 13%;
+    --popover-foreground: 220 25% 94%;
+
+    --primary: 243 85% 68%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 222 24% 17%;
+    --secondary-foreground: 220 25% 94%;
+
+    --muted: 222 24% 16%;
+    --muted-foreground: 220 12% 66%;
+
+    --accent: 222 24% 19%;
+    --accent-foreground: 220 25% 94%;
+
+    --destructive: 0 72% 58%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 222 20% 21%;
+    --input: 222 20% 24%;
+    --ring: 243 85% 68%;
+
+    --sidebar-bg: 224 40% 6%;
+    --sidebar-foreground: 220 20% 85%;
+    --sidebar-border: 222 28% 15%;
+    --sidebar-accent: 222 30% 13%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-primary: 243 85% 70%;
+    --sidebar-ring: 243 85% 70%;
+
+    --status-confirmed-bg: 142 40% 16%;
+    --status-confirmed-fg: 142 55% 66%;
+    --status-atrisk-bg: 38 55% 18%;
+    --status-atrisk-fg: 38 90% 66%;
+    --status-modified-bg: 199 50% 18%;
+    --status-modified-fg: 199 85% 70%;
+    --status-dropped-bg: 0 45% 19%;
+    --status-dropped-fg: 0 80% 72%;
+    --status-ripple-bg: 262 40% 22%;
+    --status-ripple-fg: 262 85% 78%;
+
+    --class-constraint-bg: 38 55% 18%;
+    --class-constraint-fg: 38 90% 66%;
+    --class-expectation-bg: 243 45% 21%;
+    --class-expectation-fg: 243 85% 78%;
+    --class-completion-bg: 142 40% 16%;
+    --class-completion-fg: 142 55% 66%;
+    --class-conflict-bg: 0 45% 19%;
+    --class-conflict-fg: 0 80% 72%;
+    --class-none-bg: 220 16% 19%;
+    --class-none-fg: 220 10% 72%;
+
+    --series-1: 213 77% 56%;
+    --series-2: 17 70% 50%;
+    --series-3: 159 73% 36%;
+    --series-4: 40 100% 39%;
+    --series-5: 338 61% 58%;
+    --series-6: 120 100% 26%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--border)) transparent;
+  }
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: hsl(var(--border));
+    border-radius: 999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+
+/* React Flow theme alignment */
+.react-flow__controls {
+  box-shadow: none !important;
+  border: 1px solid hsl(var(--border));
+  border-radius: 10px;
+  overflow: hidden;
+}
+.react-flow__controls-button {
+  background: hsl(var(--card)) !important;
+  border-bottom: 1px solid hsl(var(--border)) !important;
+  color: hsl(var(--foreground)) !important;
+  fill: hsl(var(--foreground)) !important;
+}
+.react-flow__controls-button:hover {
+  background: hsl(var(--accent)) !important;
+}
+.react-flow__attribution {
+  display: none;
+}
+
+/* Print / "Save PDF" support for Reports pages (Retrospective
+   Intelligence's ReportsPage.jsx uses window.print() directly, no PDF
+   library). Standard isolate-and-reveal trick: hide the whole app, then
+   re-reveal only the report container, so the sidebar/topbar/filter bar
+   never end up in the printed output. `.no-print` marks anything inside
+   the report itself that's interaction-only (filters, export buttons). */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-report,
+  .print-report * {
+    visibility: visible;
+  }
+  .print-report {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    margin: 0;
+    padding: 0.5in;
+  }
+  .no-print {
+    display: none !important;
+  }
+}
+

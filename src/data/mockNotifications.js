@@ -1,0 +1,98 @@
+// Top-bar notification feed. Not project-scoped: a PM in particular needs
+// to see these across every project they're on, matching a real inbox.
+// A couple of entries are deliberately "AI-flagged" to foreshadow
+// Components 2 and 4, which don't have dedicated pages in this prototype.
+// `projectId`/`refType`/`refId` point each entry at the specific item it
+// references, so it can be clicked straight through instead of being a
+// dead end (see lib/activityLinks.js).
+
+export const mockNotifications = [
+  {
+    id: "ntf-01",
+    type: "task",
+    title: "New task assigned",
+    message: "You were assigned ‘Fallback path for enclave key storage’ on Meridian Pay.",
+    timestamp: "2026-08-27T08:15:00+05:30",
+    read: false,
+    projectId: "proj-meridianpay",
+    refType: "task",
+    refId: "task-mp-01",
+  },
+  {
+    id: "ntf-02",
+    type: "meeting",
+    title: "Meeting starting soon",
+    message: "Fraud Review Queue Design Walkthrough starts in 30 minutes.",
+    timestamp: "2026-08-27T15:00:00+05:30",
+    read: false,
+    projectId: "proj-novacart",
+    refType: "meeting",
+    refId: "mtg-nc-02",
+  },
+  {
+    id: "ntf-03",
+    type: "ai-flag",
+    title: "Gap detected",
+    message: "Gap detected in Sprint 4: 3 requirements show schedule drift against logged execution.",
+    timestamp: "2026-08-25T09:00:00+05:30",
+    read: false,
+    projectId: "proj-novacart",
+    refType: "requirement",
+    refId: null,
+  },
+  {
+    id: "ntf-04",
+    type: "ai-flag",
+    title: "Retrospective discrepancy flagged",
+    message: "Sprint 5 retrospective notes may conflict with logged delay reasons, review suggested.",
+    timestamp: "2026-08-24T17:00:00+05:30",
+    read: false,
+    projectId: "proj-novacart",
+    refType: "retro",
+    refId: "retro-nc-05",
+  },
+  {
+    id: "ntf-05",
+    type: "task",
+    title: "Task moved to Review",
+    message: "‘Search relevance tuning (400ms target)’ is ready for your review.",
+    timestamp: "2026-08-20T10:30:00+05:30",
+    read: true,
+    projectId: "proj-novacart",
+    refType: "task",
+    refId: "task-nc-11",
+  },
+  {
+    id: "ntf-06",
+    type: "meeting",
+    title: "New meeting scheduled",
+    message: "Sprint 6 Planning was added to your calendar for Aug 28, 10:00 AM.",
+    timestamp: "2026-08-24T09:05:00+05:30",
+    read: true,
+    projectId: "proj-novacart",
+    refType: "meeting",
+    refId: "mtg-nc-01",
+  },
+  {
+    id: "ntf-07",
+    type: "ai-flag",
+    title: "High-confidence signal match",
+    message: "A new Conflict signal was mapped to REQ-210 with 92% confidence.",
+    timestamp: "2026-08-21T15:35:00+05:30",
+    read: true,
+    projectId: "proj-meridianpay",
+    refType: "requirement",
+    refId: "REQ-210",
+  },
+  {
+    id: "ntf-08",
+    type: "task",
+    title: "Task assigned",
+    message: "You were assigned ‘Reason-code required field on admin console’ on Meridian Pay.",
+    timestamp: "2026-08-19T09:10:00+05:30",
+    read: true,
+    projectId: "proj-meridianpay",
+    refType: "task",
+    refId: "task-mp-06",
+  },
+];
